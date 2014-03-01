@@ -11,11 +11,8 @@ sudo apt-get -q -y update
 sudo apt-get -q -y --force-yes install lxc-docker git wget curl
 SCRIPT
 
-
 Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: $script
   config.vm.box = 'precise64'
-  #config.vm.provision "docker",
-  #  images: ["ubuntu"]
 end
 
