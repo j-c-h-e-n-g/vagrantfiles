@@ -1,0 +1,22 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+$script = <<SCRIPT
+if [ ! -f /usr/local/bin/ansible ]; then
+	yum -y install git
+	git clone git://github.com/ansible/ansible.git
+	sudo su -c 'rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm'
+	sudo yum -y install ansible
+fi
+SCRIPT
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  config.vm.provision "shell", inline: $script
+  config.vm.box = "puppetlabs/centos-6.5-64-nocm"
+  config.vm.hostname = "ansible"
+
+end
