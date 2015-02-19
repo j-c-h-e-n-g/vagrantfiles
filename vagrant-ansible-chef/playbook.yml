@@ -1,0 +1,7 @@
+- hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: install omnibus chef
+      command: curl https://www.opscode.com/chef/install.sh -o /tmp/install.sh creates=/tmp/install.sh
+    - command: bash /tmp/install.sh creates=/usr/bin/chef-solo
