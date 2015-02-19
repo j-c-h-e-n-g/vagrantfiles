@@ -1,0 +1,7 @@
+- hosts: all
+  gather_facts: no
+  tasks:
+
+
+  - yum: name=https://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm state=present
+  - yum: name=puppet state=present
